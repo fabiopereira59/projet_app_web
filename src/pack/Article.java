@@ -14,6 +14,8 @@ public class Article {
 	float prix;
 	String description;
 	String email;
+	String tel;
+	String ville;
 	
 	public String getEmail() {
 		return email;
@@ -38,9 +40,6 @@ public class Article {
 	public void setVille(String ville) {
 		this.ville = ville;
 	}
-
-	String tel;
-	String ville;
 	
 	public int getId() {
 		return id;
