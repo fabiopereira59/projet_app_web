@@ -7,7 +7,7 @@
     </head>
     <body>
         <h3>Déposer une annonce</h3>
-        <form action="deposerannonce.html">
+        <form action="Servlet" method ="get">
             <div class="parent">
                 <div class="titre">
                     <label>Titre</label>
@@ -42,6 +42,7 @@
                 <div class="images">
                     <label>Images</label><br/>
                     <input type = "submit" value = "Déposer l'annonce">
+                    <input type = "hidden", name="op", value="deposer">
                 </div>
                 
             </div>
