@@ -13,14 +13,14 @@
             <img class="logo" src="images/logo.jpg" height="50" alt="">
             <nav class="nav">
                 <li>
-                   <a href="deposerannonce.html" target="_self"><input type="button"class="btn_menu" value="Déposer une annonce"></a>
+                   <a href="deposerannonce.html" target="_self"><input type="button"class="btn_menu" value="DÃ©poser une annonce"></a>
                 </li>
 
                 <li>
                  <input id="searchbar" type="text" name="search" placeholder="Chercher un article...">
                 </li>
                 <li>
-                    <a href="Bonjour.jsp" target="_self"><input type="button" class="btn_menu" value="Se connecter"></a>
+                    <a href="bonjour.jsp" target="_self"><input type="button" class="btn_menu" value="Se connecter"></a>
                 </li>
             </nav>
         </header>
@@ -30,15 +30,15 @@
     <section class="recherche">
         <div class="div_recherche">
             <select class="recherche_item" name="categorie" id="categorie-select">
-                <option value="">--Catégorie--</option>
+                <option value="">--CatÃ©gorie--</option>
                 <option value="meubles">Meubles</option>
-                <option value="vetements">Vêtem</option>
+                <option value="vetements">VÃªtem</option>
                 <option value="livresr">Livres</option>
             </select>
 
             <input id="searchbar" class="recherche_item" type="text" name="search" placeholder="Chercher un article...">
 
-            <input id="searchbar" class="recherche_item" type="text" name="search" placeholder="Où ? Ville, code postal...">
+            <input id="searchbar" class="recherche_item" type="text" name="search" placeholder="OÃ¹ ? Ville, code postal...">
 
             <input type="button" class="recherche_item" value="Rechercher">
         </div>
@@ -46,7 +46,7 @@
     </section>
 
     <section class="categories">
-        <h1>Catégories</h1>
+        <h1>CatÃ©gories</h1>
         <div class="grille_categories">
             <div class="categorie_item">
                 <a href="">   
