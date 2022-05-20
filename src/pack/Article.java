@@ -1,9 +1,11 @@
 package pack;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Article {
@@ -16,7 +18,18 @@ public class Article {
 	String email;
 	String tel;
 	String ville;
+	@ManyToOne
+	Categorie categorie;
 	
+	
+	public Categorie getCategorie() {
+		return categorie;
+	}
+
+	public void setCategorie(Categorie categorie) {
+		this.categorie = categorie;
+	}
+
 	public String getEmail() {
 		return email;
 	}
