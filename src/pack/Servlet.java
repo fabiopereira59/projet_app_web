@@ -34,32 +34,47 @@ public class Servlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		String op = request.getParameter("op");
+		if (op != null) {	
 		
-		switch(op) {
-		case "inscrire":
-			String nom = request.getParameter("nom");
-			String prenom = request.getParameter("prenom");
-			String email = request.getParameter("email");
-			//String tel = request.getParameter("tel");
-			String mot_de_passe = request.getParameter("mot_de_passe");
-			boolean reussi = f.ajoutPersonne(nom, prenom, email, mot_de_passe);
-			if (reussi) {
+			switch(op) {
+			case "inscrire":
+				String nom = request.getParameter("nom");
+				String prenom = request.getParameter("prenom");
+				String email = request.getParameter("email");
+				//String tel = request.getParameter("tel");
+				String mot_de_passe = request.getParameter("mot_de_passe");
+				boolean reussi = f.ajoutPersonne(nom, prenom, email, mot_de_passe);
+				if (reussi) {
+					request.getRequestDispatcher("index.jsp").forward(request, response);
+				} else {
+					request.getRequestDispatcher("deposerannonce.html").forward(request, response);
+				}
+				break;
+				
+			case "deposer" :
+				String titre = request.getParameter("titre");
+				float prix = Float.parseFloat(request.getParameter("prix"));
+				String description = request.getParameter("description");
+				String mail = request.getParameter("mail");
+				String ville = request.getParameter("ville");
+				String tel = request.getParameter("tel");
+				f.ajoutArticle(titre, prix, description, mail, tel, ville);
 				request.getRequestDispatcher("index.jsp").forward(request, response);
-			} else {
-				request.getRequestDispatcher("deposerannonce.html").forward(request, response);
-			}
-			break;
+				break;
 			
-		case "deposer" :
-			String titre = request.getParameter("titre");
-			float prix = Float.parseFloat(request.getParameter("prix"));
-			String description = request.getParameter("description");
-			String mail = request.getParameter("mail");
-			String ville = request.getParameter("ville");
-			String tel = request.getParameter("tel");
-			f.ajoutArticle(titre, prix, description, mail, tel, ville);
+			case "articles" : 
+				int id_categorie = Integer.parseInt(request.getParameter("cat"));
+				Categorie categorie = f.getCategorie(id_categorie);
+				request.setAttribute("categorie", categorie);
+				request.setAttribute("la", f.listeArticles(categorie));
+				request.getRequestDispatcher("articles.jsp").forward(request, response);
+				break;
+				
+			}
+		} else {
+			request.setAttribute("lc", f.listeCategories());
 			request.getRequestDispatcher("index.jsp").forward(request, response);
-			break;
+			
 		}
 		
 	}
