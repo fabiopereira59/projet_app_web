@@ -3,6 +3,7 @@ package pack;
 import java.util.Collection;
 import java.util.HashMap;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.Singleton;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -49,26 +50,22 @@ public class Facade {
 		em.persist(article);
 	}
 	
-	/*public void ajoutAdresse(String r, String v) {
-		Adresse ad = new Adresse(r, v);
-		em.persist(ad); 
-		//adresses.put(idA, ad);
-		//idA++;
+	public Collection<Categorie> listeCategories() {
+		TypedQuery<Categorie> req = em.createQuery("select c from Categorie c", Categorie.class);
+		Collection<Categorie> lc = req.getResultList();
+		return lc;
 	}
 	
-	public Collection<Personne> listePersonnes(){
-		TypedQuery<Personne> req = em.createQuery("select p from Personne p", Personne.class);
-		Collection<Personne> lp = req.getResultList();
-		return lp;
-		//return personnes.values();
+	public Categorie getCategorie(int id) {
+		return em.find(Categorie.class, id);
 	}
 	
-	public Collection<Adresse> listeAdresses(){
-		TypedQuery<Adresse> req = em.createQuery("select a from Adresse a", Adresse.class);
-		Collection<Adresse> la = req.getResultList();
-		return la;
-		//return adresses.values();
+	public Collection<Article> listeArticles(Categorie categorie) {
+		return categorie.getArticles();
 	}
+	
+	
+	/*
 	
 	public void associer(int idP, int idA) {
 		Adresse ad = em.find(Adresse.class, idA);
